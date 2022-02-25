@@ -1,0 +1,37 @@
+{
+  "env": { 
+    "es6": true,
+    "node": true,
+    "browser": true,
+    "es2021": true
+  }, 
+  "parserOptions": { 
+    "ecmaFeatures": {
+      "jsx": true
+    },
+    "ecmaVersion": 12,
+    "sourceType": "module"
+  },
+  "rules": { 
+    "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
+    "global-require": 0,
+    "operator-linebreak": [2, "after"]
+  }, 
+  "extends": [ 
+    "eslint:recommended",
+    "plugin:react/recommended",
+    "plugin:react-hooks/recommended",
+    "plugin:react-native/all"
+  ],
+  "plugins": [
+    "react",
+    "react-hooks",
+    "react-native",
+    "jest"
+  ],
+  "settings": {
+    "react": {
+      "version": "detect"
+    }
+  }
+} 

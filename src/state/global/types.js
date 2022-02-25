@@ -1,0 +1,2 @@
+export const SESSION_INFO = 'SESSION_INFO';
+export const REMEMBER_USER = 'REMEMBER_USER';
