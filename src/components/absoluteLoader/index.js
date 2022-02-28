@@ -27,7 +27,7 @@ AbsoluteLoader.propTypes = {
 
 AbsoluteLoader.defaultProps = {
   visible: false,
-  spinnerColor: Colors.WHITE,
+  spinnerColor: Colors.GRAY_LIGHT,
   backgroundColor: Colors.BACKDROP_COLOR,
 }
 

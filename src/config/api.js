@@ -12,9 +12,9 @@ export class API {
     });
   }
 
-  static async getDataList({ type, token }) {
+  static async getDataList({ authorizationType, token }) {
     const config = {
-      headers: { Authorization: `${type} ${token}` },
+      headers: { Authorization: `${authorizationType} ${token}` },
     };
     return this.api.get(`/v1/mobile/data`, config);
   }

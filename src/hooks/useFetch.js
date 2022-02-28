@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useState } from "react"
+import { useCallback, useEffect, useState, useRef } from "react"
 import { API } from '../config/api';
 
 export default function useFetch({
@@ -9,9 +9,10 @@ export default function useFetch({
   const [data, setData] = useState(null);
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
+  const calledOnMount = useRef(false);
 
   const handleFetchData = useCallback(async () => {
-    if(!request) return;
+    if(!request || loading) return;
     setLoading(true);
     try {
       const { data } = await API[request](body);
@@ -24,9 +25,10 @@ export default function useFetch({
   }, [request, body]);
 
   useEffect(() => {
-    if(!request || !onMountFetch) return;
+    if(!onMountFetch || calledOnMount.current === true || loading) return;
+    calledOnMount.current = true;
     handleFetchData();
-  }, [request, onMountFetch, handleFetchData]);
+  }, [onMountFetch, handleFetchData]);
 
   return {
     data,

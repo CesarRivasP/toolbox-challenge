@@ -9,7 +9,6 @@ function Button({
   style,
   onPress,
   disabled,
-  titleBold,
   activeOpacity,
 }) {
   const { pressedStatus, handlePressedStatus } = usePressedStatus();
@@ -23,7 +22,7 @@ function Button({
       style={[styles.container(disabled, pressedStatus), style]}
       delayPressIn={0}
     >
-      <Text style={styles.title(titleBold, disabled)}>{title}</Text>
+      <Text style={styles.title(disabled)}>{title}</Text>
     </TouchableOpacity>
   );
 };
@@ -31,14 +30,13 @@ function Button({
 Button.propTypes = {
   title: PropTypes.string.isRequired,
   style: ViewPropTypes.style,
-  titleBold: PropTypes.bool,
   onPress: PropTypes.func,
   disabled: PropTypes.bool,
   activeOpacity: PropTypes.number,
 };
 
 Button.defaultProps = {
-  activeOpacity: 0.68,
+  activeOpacity: 0.6,
 };
 
 export default Button;

@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { View, Text, TouchableOpacity, ViewPropTypes, ScrollView } from 'react-native';
+import React from 'react';
+import { View, Text, TouchableOpacity, ViewPropTypes } from 'react-native';
 import PropTypes from 'prop-types';
 import Modal from 'react-native-modal';
 import { FontAwesome } from '@expo/vector-icons';
@@ -18,49 +18,30 @@ function InfoModal({
   showCloseButton,
   descriptionStyle,
   modalContainerStyle,
-  contentContainerCustom,
 }) {
-  const [dialogHeight, setDialogHeight] = useState(0);
-
-  const handleDialogLayout = (event) => {
-    const { height: viewHeight } = event.nativeEvent.layout;
-    setDialogHeight(viewHeight);
-  };
-
   const handleActionPress = () => {
     if (typeof onPressAction === 'function') onPressAction();
     onClose();
   };
 
-  const textDescriptionValidation = description ? (<Text style={[styles.description, descriptionStyle]}>{description}</Text>) : null;
-
-  const customDescription = (<>{description}</>);
-
   return (
     <Modal
-      useNativeDriver={true}
+      useNativeDriver
       isVisible={visible}
       onBackdropPress={onClose}
       onBackButtonPress={onClose}
       backdropColor={Colors.BACKDROP_COLOR}
       style={styles.modalContainer}
+      animationInTiming={500}
+      animationOutTiming={500}
     >
       <View
         testID='dialog'
-        onLayout={handleDialogLayout}
         style={[styles.dialog, modalContainerStyle]}
       >
         <View style={styles.containerTextModal}>
           {title ? <Text style={styles.title}>{title}</Text> : null}
-          <ScrollView
-            showsVerticalScrollIndicator={false}
-            alwaysBounceVertical={false}
-            style={[styles.contentContainer, contentContainerCustom]}
-          >
-            {
-              typeof description === 'object' ? customDescription : textDescriptionValidation
-            }
-          </ScrollView>
+          <Text style={[styles.description, descriptionStyle]}>{description}</Text>
           {actionName ? (
             <View style={styles.actionButtonContainer}>
               <Button
@@ -102,7 +83,6 @@ InfoModal.propTypes = {
   descriptionStyle: Text.propTypes.style,
   showCloseButton: PropTypes.bool,
   modalContainerStyle: ViewPropTypes.style,
-  contentContainerCustom: ViewPropTypes.style,
 };
 
 export default InfoModal;

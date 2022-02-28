@@ -60,11 +60,10 @@ const styles = StyleSheet.create({
     marginBottom: verticalScale(5),
     paddingBottom: verticalScale(15),
     paddingHorizontal: scale(25),
-    paddingTop: verticalScale(15),
+    paddingTop: verticalScale(5),
     position: 'absolute',
     width: SCREEN_WIDTH - scale(75),
     height: SCREEN_HEIGHT * 0.20,
-    borderWidth: 1,
   },
   dismissActionText: {
     color: Colors.CORAL_0,
@@ -75,7 +74,8 @@ const styles = StyleSheet.create({
   },
   title: {
     color: Colors.BLUE_DEEP_0,
-    fontSize: moderateScale(25, 0.2),
+    fontSize: moderateScale(25, 0.3),
+    fontWeight: 'bold',
     lineHeight: verticalScale(26),
     textAlign: 'center',
   }

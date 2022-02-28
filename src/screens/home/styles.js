@@ -3,37 +3,62 @@ import { scale, verticalScale, moderateScale } from '../../utils/styles/responsi
 import Colors from '../../utils/styles/colors';
 
 export default StyleSheet.create({
-  cardContainer: {
-    alignItems: 'center',
+  container: {
+    flex: 1,
+  },
+  safeAreaHeader: {
+    backgroundColor: Colors.GRAY,
+  },
+  safeAreaBottom: {
     backgroundColor: Colors.WHITE,
-    flexDirection: 'row',
-    height: verticalScale(90),
-    paddingHorizontal: verticalScale(20),
-    width: '90%',
   },
-  characterDescription: {
-    fontSize: moderateScale(15, 0.4),
-    lineHeight: verticalScale(24),
-  },
-  characterDescriptionContainer: {
-    height: verticalScale(75),
-    maxWidth: scale(200),
-    paddingLeft: scale(10),
-  },
-  characterImage: {
-    borderRadius: 5,
-    height: scale(75),
-    width: scale(75),
-  },
-  characterTitle: {
-    fontSize: moderateScale(16, 0.4),
-    lineHeight: verticalScale(24),
-  },
-  itemContainer: {
-    alignItems: 'center',
-    backgroundColor: Colors.GREY_LIGHT,
-    height: verticalScale(100),
+  carouselTitleContainer: {
+    height: verticalScale(50),
     justifyContent: 'center',
-    width: '100%',
-  }
+    paddingLeft: scale(20),
+    backgroundColor: Colors.GRAY,
+  },
+  thumbImage: {
+    width: scale(220),
+    height: scale(160),
+  },
+  posterImage: {
+    width: scale(250),
+    height: scale(370),
+  },
+  carouselTitleText: {
+    lineHeight: verticalScale(22),
+    fontSize: moderateScale(20, 0.3),
+    color: Colors.WHITE,
+    fontWeight: 'bold',
+  },
+  thumbCarouselContainer: {
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  thumbTitleText: {
+    marginVertical: verticalScale(10),
+    lineHeight: verticalScale(20),
+    fontSize: moderateScale(16, 0.3),
+    fontWeight: 'bold',
+  },
+  thumListContainer: {
+    marginVertical: verticalScale(5),
+  },
+  posterListContainer: {
+    marginBottom: verticalScale(10),
+  },
+  posterTitleText: {
+    lineHeight: verticalScale(20),
+    fontSize: moderateScale(18, 0.3),
+    position: 'absolute',
+    color: Colors.YELLOW,
+    fontWeight: 'bold',
+    bottom: verticalScale(15),
+  },
+  posterItemContainer: {
+    paddingTop: verticalScale(5),
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
 });

@@ -6,8 +6,8 @@ const Styles = StyleSheet.create({
     flex: 1,
   },
   container: {
-    backgroundColor: Colors.WHITE,
     flex: 1,
+    backgroundColor: Colors.WHITE,
   },
   head: {
     flex: 0,

@@ -2,7 +2,7 @@ const initialState = {
   isAutenticated: false,
   token: '',
   authorizationType: '',
-  userRemember: false,
+  sessionExpired: false,
 };
 
 export default initialState;

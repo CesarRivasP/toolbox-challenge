@@ -1,6 +1,5 @@
 import React, { Fragment } from 'react';
-import { ViewPropTypes, StatusBar } from 'react-native';
-import { SafeAreaView } from 'react-native-safe-area-context';
+import { ViewPropTypes, StatusBar, SafeAreaView } from 'react-native';
 import PropTypes from 'prop-types';
 import styles from './styles';
 import Colors from '../../utils/styles/colors';

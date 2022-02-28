@@ -372,12 +372,12 @@ export default StyleSheet.create({
     width: '100%',
   },
   touchableButton: {
-    color: Colors.RED,
-    height: 30,
-    padding: 2,
+    height: verticalScale(30),
+    justifyContent: 'center',
+    alignItems: 'center',
     position: 'absolute',
-    right: 3,
-    width: 30,
+    right: scale(5),
+    width: verticalScale(30),
   },
   verifyButton: {
     alignSelf: 'center',

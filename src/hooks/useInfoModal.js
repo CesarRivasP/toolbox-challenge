@@ -1,6 +1,6 @@
 import { useState, useCallback } from 'react';
 
-function useInfoModal(aditionalInitialValues = {}) {
+function useInfoModal(aditionalInitialValues) {
   const initialData = {
     visible: false,
     title: null,
@@ -11,7 +11,7 @@ function useInfoModal(aditionalInitialValues = {}) {
 
   const handleOpenModal = useCallback((values) => setInfoModal((prev) => ({ ...prev, ...values })), []);
 
-  const handleCloseModal = useCallback(() => setInfoModal(() => ({ ...initialData })), []);
+  const handleCloseModal = useCallback(() => setInfoModal((prev) => ({ ...prev, ...initialData })), []);
 
   return {
     infoModal,

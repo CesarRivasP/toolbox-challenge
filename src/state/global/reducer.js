@@ -1,4 +1,4 @@
-import { SESSION_INFO, REMEMBER_USER, LOGOUT_USER } from './types';
+import { SESSION_INFO, LOGOUT_USER, SESSION_EXPIRED } from './types';
 
 function GlobalReducer(state, action) {
   switch (action.type) {
@@ -9,10 +9,10 @@ function GlobalReducer(state, action) {
         token: action.payload.token,
         authorizationType: action.payload.authorizationType,
       };
-    case REMEMBER_USER:
+    case SESSION_EXPIRED:
       return {
         ...state,
-        userRemember: action.payload,
+        sessionExpired: true,
       };
     case LOGOUT_USER:
       return {
@@ -20,6 +20,7 @@ function GlobalReducer(state, action) {
         isAutenticated: false,
         token: '',
         authorizationType: '',
+        sessionExpired: false,
       };
     default: {
       throw new Error('Error in GlobalReducer');

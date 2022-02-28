@@ -45,8 +45,9 @@ const PasswordInput = ({
         id="securePasswordStatus"
       >
         <FontAwesome
-          name={secureTextEntry ? 'eye' : 'eye-slash'}
-          fill={Colors.BLUE_DEEP_60}
+          name={secureTextEntry ?  'eye-slash' : 'eye'}
+          color={Colors.GRAY}
+          size={20}
         />
       </TouchableOpacity>
     </View>

@@ -3,47 +3,33 @@ import {
   View,
   Text,
   TextInput,
-  TouchableOpacity,
   KeyboardAvoidingView,
   ScrollView,
+  Image,
 } from 'react-native';
 import PropTypes from 'prop-types';
 import SafeAreaFrame from '../../components/safeAreaFrame';
 import PasswordInput from '../../components/forgotPassword/passwordInput';
+import Button from '../../components/button';
+import InfoModal from '../../components/infoModal';
+import AbsoluteLoader from '../../components/absoluteLoader';
 import useGlobalContext from '../../hooks/useGlobalContext';
 import useForm from '../../hooks/useForm';
 import useFetch from '../../hooks/useFetch';
 import useInfoModal from '../../hooks/useInfoModal';
-import usePressedStatus from '../../hooks/usePressedStatus';
-import inputHideEmail from '../../helpers/inputHideEmail';
-import getUserInfo from '../../helpers/getUserInfo';
 import AUTH from '../../auth/auth';
-import InfoModal from '../../components/infoModal';
-import AbsoluteLoader from '../../components/absoluteLoader';
 import {
   INVALID_PASSWORD_ERROR,
   EMPTY_FIELDS_ERROR,
+  GENERAL_MODAL_TITLE,
+  GENERAL_ERROR_MESSAGE,
 } from '../../utils/constants/errorMessages';
+import { LOGIN_FORM } from './form';
 import * as Actions from '../../state/global/types';
 import { getDevicePlatform } from '../../helpers/getDevicePlatform';
-import * as Types from '../../config/apiTypes';
+import * as ApiTypes from '../../config/apiTypes';
 import Colors from '../../utils/styles/colors';
 import styles from './styles';
-
-export const FIRST_OR_LAST_NAME_VALIDATOR = /^(?!.*(--|´´|``|‘‘|''|’’|\.{2}){1})[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÑÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹßÇŒÆČŠŽ∂ð' .´`‘'’-]+([a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÑÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹßÇŒÆČŠŽ∂ð.]+){1}$/;
-
-const LOGIN_FORM = [
-  {
-    field: 'email',
-    required: true,
-    regex: FIRST_OR_LAST_NAME_VALIDATOR,
-    regexErrorMessage: 'Should contain only letters',
-  },
-  {
-    field: 'password',
-    required: true,
-  },
-];
 
 export default function SignIn() {
   const { globalDispatch } = useGlobalContext();
@@ -58,49 +44,40 @@ export default function SignIn() {
     },
     validationRegex: LOGIN_FORM,
   });
-  const { pressedStatus, handlePressedStatus } = usePressedStatus();
   const { data, error, loading, handleFetchData } = useFetch({
-    request: Types.POST_LOGIN_USER,
+    request: ApiTypes.POST_LOGIN_USER,
     body: null,
-    onMountFetch: false,
+    onMountFetch: false
   });
   const { infoModal, handleOpenModal, handleCloseModal } = useInfoModal({
     visible: false,
     title: null,
     description: null,
   });
-  const devicePlatform = useRef(getDevicePlatform());
+  const devicePlatformRef = useRef(getDevicePlatform());
+  const emailInputRef = useRef(null);
+  const disabledLoginButton = !form.email || !form.password;
 
   const handleLoginData = useCallback(
-    async ({ token, type: authorizationType, userAccess }) => {
+    async ({ token, type: authorizationType, userEmail }) => {
       await AUTH.setLoginSession(() => {
         globalDispatch({
           type: Actions.SESSION_INFO,
           payload: { token, authorizationType },
         });
-      }, userAccess);
-      globalDispatch({ type: Actions.SESSION_INFO });
+      }, userEmail);
     },
     [globalDispatch]
   );
 
-  const handleRememberUser = useCallback(async () => {
-    const response = await getUserInfo();
-    const email = response ? inputHideEmail(response?.email) : null;
-    if (email) {
-      globalDispatch({ type: Actions.REMEMBER_USER, payload: true });
-      // setEmailValues({ emailDisplay: email, emailValue: response?.email });
-    }
-  }, [globalDispatch]);
-
   const handleLoginUser = useCallback(async () => {
     if (handleValidateForm()) {
+      emailInputRef.current = form.email;
       handleFetchData();
     } else {
-      console.log('HUBO ERROR')
       let messageError = form.email.length === 0 ? EMPTY_FIELDS_ERROR : INVALID_PASSWORD_ERROR;
       handleOpenModal({
-        title: 'Inicio Fallido',
+        title: GENERAL_MODAL_TITLE,
         description: messageError,
         visible: true,
       });
@@ -109,18 +86,15 @@ export default function SignIn() {
 
   useEffect(() => {
     if (error) {
-      console.log(error, 'error');
+      handleOpenModal({
+        title: GENERAL_MODAL_TITLE,
+        description: GENERAL_ERROR_MESSAGE,
+        visible: true,
+      });
     } else if (data) {
-      console.log(data, 'data');
-      // handleLoginData();
+      handleLoginData({ ...data, userEmail: emailInputRef.current });
     }
   }, [data, error]);
-
-  useEffect(() => {
-    handleRememberUser();
-  }, [handleRememberUser]);
-
-  const INPUTS_COMPLETED = form.email && form.password;
 
   return (
     <SafeAreaFrame
@@ -130,7 +104,7 @@ export default function SignIn() {
     >
       <KeyboardAvoidingView
         style={styles.container}
-        behavior={devicePlatform?.current !== 'android' ? 'padding' : null}
+        behavior={devicePlatformRef?.current !== 'android' ? 'padding' : null}
         enabled
         testID="signInScreen"
       >
@@ -138,26 +112,30 @@ export default function SignIn() {
           contentContainerStyle={styles.loginContentContainer}
           keyboardShouldPersistTaps='handled'
         >
-          {/* <View style={styles.logoContainer}>
-            <RenderSvgXML xml={AppImages.svgDBFinancialLogo} />
-          </View> */}
+          <View style={{ justifyContent: 'center', alignItems: 'center', marginTop: 40 }}>
+            <Image
+              source={require('../../../assets/toolboxLogo.png')}
+              style={{ width: 250, height: 250 }}
+              resizeMode='contain'
+            />
+          </View>
           <View style={styles.inputsContainer}>
             <Text style={styles.label}>Correo Electrónico</Text>
             <TextInput
-              testID="emailInputSignIn"
-              autoCapitalize="none"
-              keyboardType="email-address"
+              testID='emailInput'
+              autoCapitalize='none'
+              keyboardType='email-address'
               value={form.email}
               style={styles.emailInput}
-              placeholder="Ingrese Correo Electrónico"
+              placeholder='Ingrese Correo Electrónico'
               onChangeText={(text) => handleChangeInput('email', text)}
               placeholderTextColor={Colors.GRAY_40}
             />
             <Text style={styles.label}>Contraseña</Text>
             <PasswordInput
-              testID="passwordInput"
+              testID='passwordInput'
               value={form.password}
-              placeholder="Ingrese Contraseña"
+              placeholder='Ingrese Contraseña'
               onChangeText={(text) => handleChangeInput('password', text)}
               textStyle={styles.passwordInput}
               eyeIconContainerStyle={styles.passwordInputIcon}
@@ -166,31 +144,14 @@ export default function SignIn() {
             />
           </View>
           <View style={styles.loginButtonSectionContainer}>
-            <TouchableOpacity
-              testID="loginUserButton"
+            <Button
+              testID='loginButtonContainer'
+              activeOpacity={1.0}
+              title='LOGIN'
+              style={styles.loginButtonContainer}
               onPress={handleLoginUser}
-              activeOpacity={0.6}
-              delayPressIn={0}
-              onPressIn={() => handlePressedStatus(true)}
-              onPressOut={() => handlePressedStatus(false)}
-              style={
-                !INPUTS_COMPLETED ?
-                  styles.loginButtonContainer :
-                  styles.loginButtonContainerActive
-              }
-              disabled={!form.email || !form.password}
-            >
-              <Text
-                style={
-                  !INPUTS_COMPLETED ?
-                    styles.loginButtonText :
-                    styles.loginButtonTextActived
-                }
-                testID="logIn"
-              >
-                LOGIN
-              </Text>
-            </TouchableOpacity>
+              disabled={disabledLoginButton}
+            />
           </View>
         </ScrollView>
       </KeyboardAvoidingView>
@@ -201,7 +162,7 @@ export default function SignIn() {
         title={infoModal.title}
         description={infoModal.description}
       />
-      <AbsoluteLoader visible={(loading)} />
+      <AbsoluteLoader visible={loading} />
     </SafeAreaFrame>
   );
 }
