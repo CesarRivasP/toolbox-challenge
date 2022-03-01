@@ -28,7 +28,6 @@ import { LOGIN_FORM } from './form';
 import * as Actions from '../../state/global/types';
 import { getDevicePlatform } from '../../helpers/getDevicePlatform';
 import * as ApiTypes from '../../config/apiTypes';
-import Colors from '../../utils/styles/colors';
 import styles from './styles';
 
 export default function Login() {
@@ -94,7 +93,7 @@ export default function Login() {
     } else if (data) {
       handleLoginData({ ...data, userEmail: emailInputRef.current });
     }
-  }, [data, error]);
+  }, [data, error, handleOpenModal, handleLoginData]);
 
   return (
     <SafeAreaFrame
@@ -112,10 +111,10 @@ export default function Login() {
           contentContainerStyle={styles.loginContentContainer}
           keyboardShouldPersistTaps='handled'
         >
-          <View style={{ justifyContent: 'center', alignItems: 'center', marginTop: 40 }}>
+          <View style={styles.logoContainer}>
             <Image
               source={require('../../../assets/toolboxLogo.png')}
-              style={{ width: 250, height: 250 }}
+              style={styles.logo}
               resizeMode='contain'
             />
           </View>
@@ -129,7 +128,6 @@ export default function Login() {
               style={styles.emailInput}
               placeholder='Ingrese Correo Electrónico'
               onChangeText={(text) => handleChangeInput('email', text)}
-              placeholderTextColor={Colors.GRAY_40}
             />
             <Text style={styles.label}>Contraseña</Text>
             <PasswordInput
@@ -139,7 +137,6 @@ export default function Login() {
               onChangeText={(text) => handleChangeInput('password', text)}
               textStyle={styles.passwordInput}
               eyeIconContainerStyle={styles.passwordInputIcon}
-              selectionColor={Colors.GRAY_0}
               onSubmitEditing={handleLoginUser}
             />
           </View>

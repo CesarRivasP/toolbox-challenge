@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { View, TouchableOpacity, Text } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import styles from './styles';
+import Colors from '../../utils/styles/colors';
 
 function Toolbar({
   title,
@@ -19,7 +20,7 @@ function Toolbar({
       <Ionicons
         name="arrow-back-outline"
         size={30}
-        color="white"
+        color={Colors.WHITE}
       />
     </TouchableOpacity>
   );
@@ -39,8 +40,8 @@ Toolbar.propTypes = {
 };
 
 Toolbar.defaultProps = {
-  title: undefined,
-  leftElement: undefined,
-  onLeftElementPress: undefined,
+  title: null,
+  leftElement: null,
+  onLeftElementPress: null,
 };
 export default Toolbar;

@@ -11,7 +11,7 @@ const styles = StyleSheet.create({
   },
   container: {
     alignItems: 'center',
-    backgroundColor: '#8F8F8F',
+    backgroundColor: Colors.GRAY,
     flexDirection: 'row',
     height: verticalScale(50),
     justifyContent: 'space-between',
@@ -20,7 +20,6 @@ const styles = StyleSheet.create({
   },
   icon: {
     height: verticalScale(36),
-    tintColor: Colors.BLUE_0,
     width: verticalScale(36),
   },
   title: {

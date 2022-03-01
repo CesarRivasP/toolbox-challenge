@@ -1,5 +1,6 @@
 import React from 'react';
 import { View, Text } from 'react-native';
+import PropTypes from 'prop-types';
 import styles from './styles';
 
 function CarouselTitle({ title }) {
@@ -12,5 +13,13 @@ function CarouselTitle({ title }) {
     </View>
   );
 }
+
+CarouselTitle.propTypes = {
+  title: PropTypes.string,
+};
+
+CarouselTitle.defaultProps = {
+  title: '',
+};
 
 export default CarouselTitle;

@@ -11,7 +11,7 @@ function useInfoModal(aditionalInitialValues) {
 
   const handleOpenModal = useCallback((values) => setInfoModal((prev) => ({ ...prev, ...values })), []);
 
-  const handleCloseModal = useCallback(() => setInfoModal((prev) => ({ ...prev, ...initialData })), []);
+  const handleCloseModal = () => setInfoModal((prev) => ({ ...prev, ...initialData }));
 
   return {
     infoModal,

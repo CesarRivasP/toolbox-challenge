@@ -51,6 +51,15 @@ export default StyleSheet.create({
   loginContentContainer: {
     flexGrow: 1,
   },
+  logo: {
+    height: 250,
+    width: 250,
+  },
+  logoContainer: {
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginTop: 40,
+  },
   passwordInput: {
     backgroundColor: Colors.WHITE,
     borderColor: Colors.GRAY,

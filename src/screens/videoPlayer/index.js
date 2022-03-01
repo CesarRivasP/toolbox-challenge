@@ -1,17 +1,23 @@
 import React, { useRef } from 'react';
 import { View } from 'react-native';
 import PropTypes from 'prop-types';
-import { Video, AVPlaybackStatus } from 'expo-av';
+import { Video } from 'expo-av';
 import SafeAreaFrame from '../../components/safeAreaFrame';
 import Toolbar from '../../components/toolbar/toolbar';
+import styles from './styles';
 
 function VideoPlayer({ navigation, route }) {
   const { videoURI } = route.params;
   const videoPlayerRef = useRef(null);
 
   return (
-    <SafeAreaFrame title='VideoPlayerScreen' completeScreen={false} headerStyle={{ backgroundColor: '#8F8F8F', }} completeStyle={{ backgroundColor: 'white' }}>
-      <View style={{ flex: 1 }}>
+    <SafeAreaFrame
+      title='VideoPlayerScreen'
+      completeScreen={false}
+      headerStyle={styles.safeAreaHeader}
+      completeStyle={styles.safeAreaBottom}
+    >
+      <View style={styles.container}>
         <Toolbar
           leftElement
           title="Video Player"
@@ -19,7 +25,7 @@ function VideoPlayer({ navigation, route }) {
         />
         <Video
           ref={videoPlayerRef}
-          style={{ alignSelf: 'center', width: 400, height: 250, marginTop: 20 }}
+          style={styles.videoPlayerContainer}
           useNativeControls
           source={{ uri: videoURI }}
         />
@@ -29,6 +35,9 @@ function VideoPlayer({ navigation, route }) {
 }
 
 VideoPlayer.propTypes = {
+  navigation: PropTypes.shape({
+    goBack: PropTypes.func.isRequired,
+  }).isRequired,
   route: PropTypes.shape({
     params: PropTypes.shape({
       videoURI: PropTypes.string.isRequired,

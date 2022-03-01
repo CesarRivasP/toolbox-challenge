@@ -22,10 +22,10 @@ export default function useFetch({
     } finally {
       setLoading(false);
     }
-  }, [request, body]);
+  }, [request, body, loading]);
 
   useEffect(() => {
-    if(!onMountFetch || calledOnMount.current === true || loading) return;
+    if(!onMountFetch || calledOnMount.current === true) return;
     calledOnMount.current = true;
     handleFetchData();
   }, [onMountFetch, handleFetchData]);

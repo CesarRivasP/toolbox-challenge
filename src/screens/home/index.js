@@ -74,7 +74,7 @@ function Home({ navigation }) {
       isRefreshingRef.current = false;
       setRefreshing(false);
     }
-  }, [error, data, refreshing]);
+  }, [error, data, refreshing, globalDispatch, handleOpenModal]);
 
   const carouselList = useMemo(() => {
     let listData = {
@@ -141,6 +141,7 @@ function Home({ navigation }) {
         <ScrollView
           refreshControl={
             <RefreshControl
+              testID='refreshControl'
               refreshing={refreshing}
               onRefresh={handleOnRefresh}
             />
@@ -149,7 +150,8 @@ function Home({ navigation }) {
           <CarouselTitle title={carouselList?.carouselThumbTitle} />
           <FlatList
             horizontal
-            key={'ThumbCarousel'}
+            key='thumbCarousel'
+            testID='thumbCarouselFlatList'
             contentContainerStyle={styles.thumListContainer}
             keyExtractor={keyThumbCarouselExtractor}
             data={carouselList?.thumbItems}
@@ -158,7 +160,8 @@ function Home({ navigation }) {
           <CarouselTitle title={carouselList?.carouselPosterTitle} />
           <FlatList
             horizontal
-            key={'PosterCarousel'}
+            key='posterCarousel'
+            testID='posterCarouselFlatList'
             contentContainerStyle={styles.posterListContainer}
             keyExtractor={keyPosterCarouselExtractor}
             data={carouselList?.posterItems}

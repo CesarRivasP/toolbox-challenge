@@ -41,7 +41,7 @@ function App() {
         description: SESSION_EXPIRED_MESSAGE,
       });
     }
-  }, [globalState.sessionExpired]);
+  }, [globalState.sessionExpired, handleOpenModal]);
 
   return (
     <GlobalContext.Provider value={{ globalState, globalDispatch }}>
