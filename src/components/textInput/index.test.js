@@ -1,5 +1,5 @@
 import React from 'react';
-import {TextInput as Input} from 'react-native'
+import { TextInput as Input } from 'react-native';
 import { shallow } from 'enzyme';
 import TextInput from '.';
 
@@ -8,14 +8,18 @@ describe('Text Input', () => {
   const onChangeSpy = jest.fn()
 
   beforeEach(() => {
-    container = shallow(<TextInput label="Test" placeholder="Plac" onChangeText={onChangeSpy} error="Invalid input" />);
-  });
-
-  it('should render component', () => {
-    expect(container).not.toBeNull();
+    container = shallow(
+      <TextInput
+        label="Test"
+        placeholder="Plac"
+        onChangeText={onChangeSpy}
+        error="Invalid input"
+        />
+      );
   });
 
   it('should present label', () => {
+    expect(container).not.toBeNull();
     const text = container.find('Text').at(0);
     expect(text.props().children).toBe('Test');
   });

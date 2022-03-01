@@ -7,7 +7,7 @@ on:
 
 env:
   NODE_ENV: ${{ 'production' }}
-  API_URL: ${{ secrets.API_URL_DEV }}
+  API_URL: ${{ secrets.API_URL }}
   ACCESS_USER_KEY: ${{ secrets.ACCESS_USER_KEY }}
 
 jobs:
