@@ -10,9 +10,7 @@ module.exports = {
     'eslint:recommended',
     'plugin:react/recommended',
     'plugin:react-hooks/recommended',
-    'plugin:react-native/all'
-  ],
-  parser: '@babel/eslint-parser',
+    'plugin:react-native/all'],
   parserOptions: {
     ecmaFeatures: {
       jsx: true,

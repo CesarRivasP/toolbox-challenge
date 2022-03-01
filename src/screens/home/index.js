@@ -172,7 +172,10 @@ function Home({ navigation }) {
           title={infoModal.title}
           description={infoModal.description}
         />
-        <AbsoluteLoader visible={(isRefreshingRef.current !== true && loading)} />
+        <AbsoluteLoader
+          backgroundColor='transparent'
+          visible={(isRefreshingRef.current !== true && loading)}
+        />
       </View>
     </SafeAreaFrame>
   );

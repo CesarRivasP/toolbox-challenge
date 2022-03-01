@@ -1,9 +1,13 @@
-import React from "react";
-import PropTypes from "prop-types";
-import { View, TextInput as Input, ViewPropTypes } from "react-native";
-import { Text } from "@ui-kitten/components";
-import styles from "./styles";
-import Colors from "../../utils/styles/colors";
+import React from 'react';
+import PropTypes from 'prop-types';
+import {
+  View,
+  TextInput as Input,
+  Text,
+  ViewPropTypes,
+} from 'react-native';
+import styles from './styles';
+import Colors from '../../utils/styles/colors';
 
 function TextInput(props){
   const { label, containerStyle, error, inputStyle } = props;
@@ -18,7 +22,7 @@ function TextInput(props){
       {error ? <Text style={styles.error}>{error}</Text> : null}
     </View>
   );
-};
+}
 
 TextInput.propTypes = {
   label: PropTypes.string,

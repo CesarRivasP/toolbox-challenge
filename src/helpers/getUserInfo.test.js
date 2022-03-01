@@ -5,18 +5,16 @@ import getUserInfo from './getUserInfo';
 describe('GetUserInfo helper', () => {
   let SecureStorageSpy;
   const EMAIL = 'test_email@gmail.com';
-  let EXPECTED_DATA = {
-    email: EMAIL,
-    password: 'password',
-  };
+  let EXPECTED_EMAIL = EMAIL;
 
   beforeEach(() => {
     SecureStorageSpy = jest.spyOn(SecureStore, 'getItemAsync');
-    SecureStorageSpy.mockReturnValue(Promise.resolve(JSON.stringify(EXPECTED_DATA)));
+    SecureStorageSpy.mockReturnValue(Promise.resolve(EXPECTED_EMAIL));
   });
 
   it('should get user data from async storage', async () => {
-    expect(await getUserInfo()).toMatchObject(EXPECTED_DATA);
+    const userEmail = await getUserInfo();
+    expect(userEmail).toBe(EXPECTED_EMAIL);
   });
 
   it('should throw if async storage fail', async () => {

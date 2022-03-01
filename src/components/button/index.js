@@ -14,6 +14,7 @@ function Button({
   const { pressedStatus, handlePressedStatus } = usePressedStatus();
   return (
     <TouchableOpacity
+      testID='buttonComponent'
       activeOpacity={activeOpacity}
       disabled={disabled}
       onPress={onPress}
@@ -25,7 +26,7 @@ function Button({
       <Text style={styles.title(disabled)}>{title}</Text>
     </TouchableOpacity>
   );
-};
+}
 
 Button.propTypes = {
   title: PropTypes.string.isRequired,

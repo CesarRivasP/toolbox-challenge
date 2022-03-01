@@ -7,8 +7,9 @@ export class API {
   });
 
   static async postLoginUser() {
+    const subParam = 'ToolboxMobileTest';
     return this.api.post('/v1/mobile/auth', {
-      sub: 'ToolboxMobileTest',
+      sub: subParam,
     });
   }
 

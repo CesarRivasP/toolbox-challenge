@@ -1,20 +1,12 @@
 import * as SecureStore from 'expo-secure-store';
-// import * as Sentry from 'sentry-expo';
-
-const ACCESS_USER_KEY = 'momentoAccessToken';
+import ENV from '../config/envVars';
 
 const getUserInfo = async () => {
   try {
-    const response = await SecureStore.getItemAsync(ACCESS_USER_KEY);
-    const validResponse = response ? JSON.parse(response) : null;
+    const response = await SecureStore.getItemAsync(ENV?.ACCESS_USER_KEY);
+    const validResponse = response ? response : null;
     return validResponse;
   } catch (error) {
-    // Sentry.Native.captureException(new Error(`Error in getUserInfo method: ${error}`), {
-    //   tags: {
-    //     section: 'LOGIN',
-    //     func: 'GetUserInfo',
-    //   },
-    // });
     return null;
   }
 };

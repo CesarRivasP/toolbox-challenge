@@ -31,7 +31,7 @@ import * as ApiTypes from '../../config/apiTypes';
 import Colors from '../../utils/styles/colors';
 import styles from './styles';
 
-export default function SignIn() {
+export default function Login() {
   const { globalDispatch } = useGlobalContext();
   const {
     form,
@@ -106,7 +106,7 @@ export default function SignIn() {
         style={styles.container}
         behavior={devicePlatformRef?.current !== 'android' ? 'padding' : null}
         enabled
-        testID="signInScreen"
+        testID='loginKeyboardAvoidingView'
       >
         <ScrollView
           contentContainerStyle={styles.loginContentContainer}
@@ -167,7 +167,7 @@ export default function SignIn() {
   );
 }
 
-SignIn.propTypes = {
+Login.propTypes = {
   navigation: PropTypes.shape({
     navigate: PropTypes.func.isRequired,
     goBack: PropTypes.func.isRequired,

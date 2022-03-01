@@ -26,6 +26,6 @@ function GlobalReducer(state, action) {
       throw new Error('Error in GlobalReducer');
     }
   }
-};
+}
 
 export default GlobalReducer;

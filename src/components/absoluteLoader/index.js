@@ -17,7 +17,7 @@ function AbsoluteLoader({
     );
   }
   return null;
-};
+}
 
 AbsoluteLoader.propTypes = {
   visible: PropTypes.bool.isRequired,

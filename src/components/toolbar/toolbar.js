@@ -30,7 +30,7 @@ function Toolbar({
       {title ? <Text style={styles.title} testID='toolbarTitle'>{title}</Text> : null}
     </View>
   );
-};
+}
 
 Toolbar.propTypes = {
   title: PropTypes.string,

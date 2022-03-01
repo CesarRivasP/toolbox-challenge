@@ -6,6 +6,6 @@ function usePressedStatus() {
   const handlePressedStatus = (status) => setPressedStatus(status);
 
   return { pressedStatus, handlePressedStatus };
-};
+}
 
 export default usePressedStatus;

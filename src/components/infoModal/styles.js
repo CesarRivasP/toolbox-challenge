@@ -4,12 +4,6 @@ import { moderateScale, scale, verticalScale } from '../../utils/styles/responsi
 import Colors from '../../utils/styles/colors';
 
 const styles = StyleSheet.create({
-  modalContainer: {
-    alignItems: 'center',
-    flex: 1,
-    justifyContent: 'center',
-    margin: 0,
-  },
   actionButton: {
     borderRadius: moderateScale(100),
     marginTop: verticalScale(16),
@@ -57,13 +51,13 @@ const styles = StyleSheet.create({
   dialog: {
     backgroundColor: Colors.WHITE,
     borderRadius: 20,
+    height: SCREEN_HEIGHT * 0.20,
     marginBottom: verticalScale(5),
     paddingBottom: verticalScale(15),
     paddingHorizontal: scale(25),
     paddingTop: verticalScale(5),
     position: 'absolute',
     width: SCREEN_WIDTH - scale(75),
-    height: SCREEN_HEIGHT * 0.20,
   },
   dismissActionText: {
     color: Colors.CORAL_0,
@@ -71,6 +65,12 @@ const styles = StyleSheet.create({
     marginTop: 30,
     textAlign: 'center',
     textDecorationLine: 'underline',
+  },
+  modalContainer: {
+    alignItems: 'center',
+    flex: 1,
+    justifyContent: 'center',
+    margin: 0,
   },
   title: {
     color: Colors.BLUE_DEEP_0,

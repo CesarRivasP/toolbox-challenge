@@ -32,7 +32,7 @@ function CarouselItem({
       </Text>
     </TouchableOpacity>
   );
-};
+}
 
 CarouselItem.defaultProps = {
   id: '',

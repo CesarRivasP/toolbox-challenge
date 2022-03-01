@@ -58,17 +58,4 @@ describe("Autentication class", () => {
       );
     }
   });
-
-  it("should throw an error when async storage is not available", async () => {
-    jest
-      .spyOn(SecureStore, "deleteItemAsync")
-      .mockRejectedValueOnce("Function not available");
-    try {
-      await AUTH.deletePreviousSession();
-    } catch (error) {
-      expect(error.message).toBe(
-        "Error in deletePreviousSession: Function not available"
-      );
-    }
-  });
 });

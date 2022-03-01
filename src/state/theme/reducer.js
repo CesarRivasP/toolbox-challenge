@@ -12,6 +12,6 @@ function ThemeReducer(state, action) {
       throw new Error();
     }
   }
-};
+}
 
 export default ThemeReducer;

@@ -1,6 +1,5 @@
 import * as SecureStore from 'expo-secure-store';
-
-const ACCESS_USER_KEY = 'ToolboxKey';
+import ENV from '../config/envVars';
 
 class Auth {
   constructor() {
@@ -10,7 +9,7 @@ class Auth {
   async setLoginSession(loginCallback, userEmail) {
     this.authenticated = true;
     try {
-      await SecureStore.setItemAsync(ACCESS_USER_KEY, JSON.stringify(userEmail));
+      await SecureStore.setItemAsync(ENV?.ACCESS_USER_KEY, userEmail);
       loginCallback();
     } catch (error) {
       throw new Error(`Error in setLoginSession function ${error}`);
