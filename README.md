@@ -48,7 +48,8 @@ Here are screenshots of the app:
 * Automated CI/CD actions were implemented through  [Github Actions](https://github.com/features/actions) to test, and validate the code with [Eslint](https://eslint.org/) when merging to the Main branch. Updates to the current [Expo testing channel](https://expo.dev/@cesarrivas10/ToolboxChallenge?release-channel=toolbox-challenge) were also automated.
 * Unit Tests were implemented to validate that the behavior of the components is as expected.
 
-| <img src="https://user-images.githubusercontent.com/31055680/156288264-82907683-c840-41c2-8d3f-9a4eaa08ae1e.png" width="500"/>     |
+<img src="https://user-images.githubusercontent.com/31055680/156288264-82907683-c840-41c2-8d3f-9a4eaa08ae1e.png" width="500"/>
 
 **Note:**
-The implementation of the methods was missing so that when the session is closed by an UnAuthorized, the user's email is autocompleted in the email field. The method exists, but was not implemented for reasons of time.
+* It is important to note that to validate the functionality of the logout due to expired token, refresh must be done in the main scroll on the home screen. Once this expires, the warning modal should exit and the user should be logged out.
+* The implementation of the methods was missing so that when the session is closed by an UnAuthorized, the user's email is autocompleted in the email field. The method exists, but was not implemented for reasons of time.
