@@ -48,7 +48,7 @@ Here are screenshots of the app:
 * Automated CI/CD actions were implemented through  [Github Actions](https://github.com/features/actions) to test, and validate the code with [Eslint](https://eslint.org/) when merging to the Main branch. Updates to the current [Expo testing channel](https://expo.dev/@cesarrivas10/ToolboxChallenge?release-channel=toolbox-challenge) were also automated.
 * Unit Tests were implemented to validate that the behavior of the components is as expected.
 
-| <img src="<img width="1666" alt="Screen Shot 2022-03-01 at 9 22 19 AM" src="https://user-images.githubusercontent.com/31055680/156288264-82907683-c840-41c2-8d3f-9a4eaa08ae1e.png">" width="300"/>     |
+| <img src="https://user-images.githubusercontent.com/31055680/156288264-82907683-c840-41c2-8d3f-9a4eaa08ae1e.png" width="300"/>     |
 
 **Note:**
 The implementation of the methods was missing so that when the session is closed by an UnAuthorized, the user's email is autocompleted in the email field. The method exists, but was not implemented for reasons of time.
