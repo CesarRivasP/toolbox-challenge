@@ -14,3 +14,11 @@ web-build/
 .DS_Store
 
 coverage
+
+# CocoaPods
+/ios/Pods/
+
+# Expo
+.expo/
+web-build/
+dist/
