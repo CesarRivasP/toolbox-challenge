@@ -9,15 +9,16 @@ describe('API config', () => {
   const resolveGetData = (responseData) => {
     mockAxios.get.mockImplementation(() =>
       Promise.resolve(responseData)
-    )
-  }
+    );
+  };
+
   const resolvePostData = (responseData) => {
     mockAxios.post.mockImplementation(() =>
       Promise.resolve(responseData)
-    )
-  }
+    );
+  };
 
-  it('should return the token', async () => {
+  it('Should return the token.', async () => {
     const responseData = {
       data: {
         token: TOKEN,
@@ -33,7 +34,7 @@ describe('API config', () => {
     expect(mockAxios.post).toHaveBeenCalled();
   });
 
-  it('You return user information', async () => {
+  it('Should return data list.', async () => {
     const responseData = {
       data: MOCK_DATA_LIST,
     };

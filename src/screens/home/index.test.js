@@ -1,4 +1,3 @@
-jest.mock('expo-secure-store');
 import * as React from 'react';
 import { mount } from 'enzyme';
 import HomeScreen from '.';
@@ -51,7 +50,7 @@ describe('Login screen', () => {
     );
   };
 
-  it('should flatlist return keyExtractor correctly', () => {
+  it('When obtaining the data correctly, the elements should be displayed and the navigation should be executed when selecting one that contains the videoUrl field.', () => {
     mockData = MOCK_DATA_LIST;
     loadWrapper();
     wrapper.update();
@@ -68,7 +67,7 @@ describe('Login screen', () => {
     expect(navigation.navigate).toHaveBeenCalledTimes(1);
   });
 
-  it('should flatlist return keyExtractor correctly', async () => {
+  it('When obtaining the data correctly, the elements should be displayed, but without executing the navigation when selecting one that does not contain the videoUrl field.', async () => {
     mockData = MOCK_DATA_LIST;
     loadWrapper();
     wrapper.update();
@@ -87,7 +86,7 @@ describe('Login screen', () => {
     expect(infoModal.props().description).toBe(VIDEO_NOT_AVALIABLE_MESSAGE);
   });
 
-  it('should flatlist return keyExtractor correctly', async () => {
+  it('When getting the error code E403 from the api, the dispatch of SESSION_EXPIRED should be executed.', async () => {
     mockData = MOCK_DATA_LIST;
     loadWrapper();
     wrapper.update();
@@ -108,7 +107,7 @@ describe('Login screen', () => {
     });
   });
 
-  it('should flatlist return keyExtractor correctly', async () => {
+  it('When obtaining the error code E401 from the api, the error modal should be displayed with the indicated message.', async () => {
     mockData = MOCK_DATA_LIST;
     loadWrapper();
     wrapper.update();

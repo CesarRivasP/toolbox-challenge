@@ -1,14 +1,15 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 import PasswordInput from './passwordInput';
+import Colors from '../../utils/styles/colors';
 
-describe('Forgot password', () => {
+describe('Forgot password input component', () => {
   let wrapper;
   const valueValidate = '****';
   const placeholderValidate = 'password';
   const onChangeTextValidate = jest.fn();
   const style = {
-    color: '#000',
+    color: Colors.BLACK,
   };
 
   beforeEach(() => {
@@ -22,12 +23,9 @@ describe('Forgot password', () => {
     );
   });
 
-  it('should render', () => {
-    expect(wrapper).not.toBeNull();
-  });
-
   it('should return false when pressed', () => {
-    const secureTogglePress = wrapper.find({ id: 'securePasswordStatus' });
+    expect(wrapper).not.toBeNull();
+    const secureTogglePress = wrapper.find({ testID: 'securePasswordStatus' });
     secureTogglePress.simulate('press');
     expect(wrapper.prop('secureTextEntry')).toBeFalsy();
   });

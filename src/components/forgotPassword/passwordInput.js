@@ -28,9 +28,8 @@ const PasswordInput = ({
   return (
     <View style={styles.textBoxContainer}>
       <TextInput
-        underlineColorAndroid="transparent"
+        underlineColorAndroid='transparent'
         secureTextEntry={secureTextEntry}
-        placeholderTextColor={Colors.GRAY_40}
         style={textStyle}
         value={value}
         placeholder={placeholder}
@@ -42,7 +41,7 @@ const PasswordInput = ({
         activeOpacity={0.8}
         style={[styles.touchableButton, eyeIconContainerStyle]}
         onPress={() => toggleSecureEntry()}
-        id="securePasswordStatus"
+        testID='securePasswordStatus'
       >
         <FontAwesome
           name={secureTextEntry ?  'eye-slash' : 'eye'}

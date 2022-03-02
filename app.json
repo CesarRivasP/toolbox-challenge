@@ -1,10 +1,13 @@
 {
   "expo": {
     "name": "ToolboxChallenge",
-    "slug": "ToolboxChallenge",
+    "slug": "toolbox-challenge",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/toolboxIcon.png",
+    "privacy": "public",
+    "userInterfaceStyle": "light",
+    "platforms": ["ios", "android"],
     "splash": {
       "image": "./assets/splash.png",
       "resizeMode": "contain",
@@ -17,9 +20,15 @@
       "**/*"
     ],
     "ios": {
-      "supportsTablet": true
+      "buildNumber": "1.0.0",
+      "bundleIdentifier": "com.cesarrivas.challengetoolbox",
+      "supportsTablet": false,
+      "infoPlist": {
+        "UIUserInterfaceStyle": "Light"
+      }
     },
     "android": {
+      "package": "com.cesarrivas.toolboxchallenge",
       "adaptiveIcon": {
         "foregroundImage": "./assets/toolboxIcon.png",
         "backgroundColor": "#FFFFFF"

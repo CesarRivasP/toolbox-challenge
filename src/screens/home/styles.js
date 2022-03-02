@@ -19,8 +19,8 @@ export default StyleSheet.create({
     flex: 1,
   },
   posterImage: {
-    height: scale(370),
-    width: scale(250),
+    height: scale(350),
+    width: scale(240),
   },
   posterItemContainer: {
     alignItems: 'center',

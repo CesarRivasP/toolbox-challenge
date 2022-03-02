@@ -134,7 +134,7 @@ describe('Login screen', () => {
     expect(infoModal.props().visible).toBeFalsy();
   });
 
-  it('should call logIn api when valid email and password have been entered', async () => {
+  it('When getting the response from the expected api, the dispatch of SESSION_INFO should be executed.', async () => {
     mockData = VALID_RESPONSE;
     loadWrapper();
     await generateValidCall();
@@ -148,7 +148,7 @@ describe('Login screen', () => {
     });
   });
 
-  it('should call logIn api when valid email and password have been entered', async () => {
+  it('When getting an error from the api, the indicated error message should be displayed.', async () => {
     mockData = null;
     mockError = new Error('Ocurrio un error');
     loadWrapper();

@@ -14,6 +14,7 @@ import * as ActionTypes from '../../state/global/types';
 import { GENERAL_MODAL_TITLE, VIDEO_NOT_AVALIABLE_MESSAGE } from '../../utils/constants/errorMessages';
 import { ERROR_CODE, ERROR_CODE_STATUS, ERROR_CODE_MESSAGE } from '../../utils/constants/errorCodes';
 import styles from './styles';
+import Colors from '../../utils/styles/colors';
 
 function Home({ navigation }) {
   const { globalState, globalDispatch } = useGlobalContext();
@@ -134,6 +135,7 @@ function Home({ navigation }) {
     <SafeAreaFrame
       title='HomeScreen'
       completeScreen={false}
+      statusBarColor={Colors.GRAY}
       headerStyle={styles.safeAreaHeader}
       completeStyle={styles.safeAreaBottom}
     >
