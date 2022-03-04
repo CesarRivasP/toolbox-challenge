@@ -7,7 +7,7 @@
     "icon": "./assets/toolboxIcon.png",
     "privacy": "public",
     "userInterfaceStyle": "light",
-    "platforms": ["ios", "android"],
+    "platforms": ["ios", "android", "web"],
     "splash": {
       "image": "./assets/splash.png",
       "resizeMode": "contain",

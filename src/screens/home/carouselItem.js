@@ -48,9 +48,9 @@ CarouselItem.propTypes = {
   id: PropTypes.string,
   title: PropTypes.string,
   imageUri: PropTypes.string,
-  containerStyle: ViewPropTypes.style,
-  imageStyle: ViewPropTypes.style,
-  titleStyle: Text.propTypes.style,
+  // containerStyle: ViewPropTypes.style,
+  // imageStyle: ViewPropTypes.style,
+  // titleStyle: Text.propTypes.style,
   handlePress: PropTypes.func.isRequired,
 };
 

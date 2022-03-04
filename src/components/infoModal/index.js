@@ -80,9 +80,9 @@ InfoModal.propTypes = {
   actionName: PropTypes.string,
   dismissActionText: PropTypes.string,
   onPressAction: PropTypes.func,
-  descriptionStyle: Text.propTypes.style,
+  // descriptionStyle: Text.propTypes.style,
   showCloseButton: PropTypes.bool,
-  modalContainerStyle: ViewPropTypes.style,
+  // modalContainerStyle: ViewPropTypes.style,
 };
 
 export default InfoModal;

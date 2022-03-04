@@ -60,7 +60,7 @@ PasswordInput.propTypes = {
   textStyle: PropTypes.shape({}).isRequired,
   onFocus: PropTypes.func,
   onBlur: PropTypes.func,
-  eyeIconContainerStyle: ViewPropTypes.style,
+  // eyeIconContainerStyle: ViewPropTypes.style,
 };
 
 export default PasswordInput;

@@ -23,8 +23,8 @@ function SafeAreaFrame({
   } else {
     renderSafeArea = (
       <>
-        <SafeAreaView style={[styles.head, headerStyle]} />
-        <SafeAreaView style={[styles.bottom, completeStyle]}>
+        <SafeAreaView /*style={[styles.head, headerStyle]} */ />
+        <SafeAreaView /*style={[styles.bottom, completeStyle]} */>
           {children}
         </SafeAreaView>
       </>
@@ -45,8 +45,8 @@ SafeAreaFrame.propTypes = {
     PropTypes.arrayOf(PropTypes.node),
     PropTypes.node
   ]).isRequired,
-  headerStyle: ViewPropTypes.style,
-  completeStyle: ViewPropTypes.style,
+  // headerStyle: ViewPropTypes.style,
+  // completeStyle: ViewPropTypes.style,
   statusBarColor: PropTypes.string,
   statusBarStyle: PropTypes.string,
 };

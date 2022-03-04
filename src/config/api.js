@@ -3,7 +3,7 @@ import ENV from './envVars';
 
 export class API {
   static api = axios.create({
-    baseURL: ENV?.API_URL,
+    baseURL: 'https://echo-serv.tbxnet.com/',
   });
 
   static async postLoginUser() {

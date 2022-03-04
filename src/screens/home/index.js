@@ -3,7 +3,7 @@ import { View, ScrollView, FlatList, RefreshControl } from 'react-native';
 import PropTypes from 'prop-types';
 import SafeAreaFrame from '../../components/safeAreaFrame';
 import useInfoModal from '../../hooks/useInfoModal';
-import AbsoluteLoader from '../../components/absoluteLoader';
+// import AbsoluteLoader from '../../components/absoluteLoader';
 import CarouselItem from './carouselItem';
 import CarouselTitle from './carouselTitle';
 import InfoModal from '../../components/infoModal';
@@ -56,26 +56,26 @@ function Home({ navigation }) {
     setRefreshing(true);
   }, [handleFetchData]);
 
-  useEffect(() => {
-    if (error){
-      if (refreshing) {
-        isRefreshingRef.current = false;
-        setRefreshing(false);
-      }
-      if (ERROR_CODE_STATUS[error?.response?.data?.code] === ERROR_CODE.UNAUTHORIZED) {
-        globalDispatch({ type: ActionTypes.SESSION_EXPIRED });
-      } else {
-        handleOpenModal({
-          visible: true,
-          title: GENERAL_MODAL_TITLE,
-          description: ERROR_CODE_MESSAGE[ERROR_CODE.SERVER_ERROR],
-        });
-      }
-    } else if (data && refreshing) {
-      isRefreshingRef.current = false;
-      setRefreshing(false);
-    }
-  }, [error, data, refreshing, globalDispatch, handleOpenModal]);
+  // useEffect(() => {
+  //   if (error){
+  //     if (refreshing) {
+  //       isRefreshingRef.current = false;
+  //       setRefreshing(false);
+  //     }
+  //     if (ERROR_CODE_STATUS[error?.response?.data?.code] === ERROR_CODE.UNAUTHORIZED) {
+  //       globalDispatch({ type: ActionTypes.SESSION_EXPIRED });
+  //     } else {
+  //       handleOpenModal({
+  //         visible: true,
+  //         title: GENERAL_MODAL_TITLE,
+  //         description: ERROR_CODE_MESSAGE[ERROR_CODE.SERVER_ERROR],
+  //       });
+  //     }
+  //   } else if (data && refreshing) {
+  //     isRefreshingRef.current = false;
+  //     setRefreshing(false);
+  //   }
+  // }, [error, data, refreshing, globalDispatch, handleOpenModal]);
 
   const carouselList = useMemo(() => {
     let listData = {
@@ -170,17 +170,17 @@ function Home({ navigation }) {
             renderItem={handleRenderPosterList}
           />
         </ScrollView>
-        <InfoModal
+        {/* <InfoModal
           showCloseButton
           onClose={handleCloseModal}
           visible={infoModal.visible}
           title={infoModal.title}
           description={infoModal.description}
-        />
-        <AbsoluteLoader
+        /> */}
+        {/* <AbsoluteLoader
           backgroundColor='transparent'
           visible={(isRefreshingRef.current !== true && loading)}
-        />
+        /> */}
       </View>
     </SafeAreaFrame>
   );

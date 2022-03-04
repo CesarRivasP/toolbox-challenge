@@ -26,7 +26,7 @@ function TextInput(props){
 
 TextInput.propTypes = {
   label: PropTypes.string,
-  containerStyle: ViewPropTypes.style,
+  // containerStyle: ViewPropTypes.style,
   inputStyle: Input.propTypes.style,
   error: PropTypes.string,
 };
